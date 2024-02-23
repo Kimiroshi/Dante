@@ -210,8 +210,8 @@ QToolBox::tab {
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>100</width>
-                  <height>48</height>
+                  <width>198</width>
+                  <height>476</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -916,7 +916,7 @@ border-radius: 15px</string>
               <number>0</number>
              </property>
              <item alignment="Qt::AlignBottom">
-              <widget class="QLabel" name="label">
+              <widget class="QLabel" name="verison_label">
                <property name="styleSheet">
                 <string notr="true">color: white</string>
                </property>

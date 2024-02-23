@@ -12,6 +12,7 @@ class MainPage(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.verison_label.setText('Dante v0.4.5')
 
         # удаление рамок
         self.setWindowFlags(Qt.FramelessWindowHint)

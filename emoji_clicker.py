@@ -205,9 +205,9 @@ screen_rect = (0, 90, WIDTH, HEIGHT)
 size = (WIDTH, HEIGHT)
 
 mouse = load_image('mouse.png', 'emoji_clicker')
-mouse = pygame.transform.scale(mouse, (64, 64))
+mouse = pygame.transform.scale(mouse, (48, 48))
 hover = load_image('mouse_hover.png', 'emoji_clicker')
-hover = pygame.transform.scale(hover, (64, 64))
+hover = pygame.transform.scale(hover, (48, 48))
 
 all_sprites = pygame.sprite.Group()
 button_group = pygame.sprite.Group()
