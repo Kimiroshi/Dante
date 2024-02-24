@@ -151,6 +151,12 @@
              <iconset>
               <normaloff>qt_icons/arrow-down-left.svg</normaloff>qt_icons/arrow-down-left.svg</iconset>
             </property>
+            <property name="iconSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item>
@@ -165,6 +171,12 @@
              <iconset>
               <normaloff>qt_icons/maximize-2.svg</normaloff>qt_icons/maximize-2.svg</iconset>
             </property>
+            <property name="iconSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item>
@@ -178,6 +190,12 @@
             <property name="icon">
              <iconset>
               <normaloff>qt_icons/x.svg</normaloff>qt_icons/x.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -249,6 +267,12 @@
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item alignment="Qt::AlignHCenter">
            <widget class="QLineEdit" name="login_edit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>270</width>
@@ -297,6 +321,12 @@ border-bottom: 3px solid rgb(230, 5, 64);</string>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item alignment="Qt::AlignHCenter">
            <widget class="QLineEdit" name="password_edit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>270</width>
@@ -327,6 +357,12 @@ border-bottom: 3px solid rgb(230, 5, 64)</string>
        </item>
        <item alignment="Qt::AlignHCenter">
         <widget class="QFrame" name="frame_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>200</width>
@@ -336,8 +372,20 @@ border-bottom: 3px solid rgb(230, 5, 64)</string>
          <property name="maximumSize">
           <size>
            <width>200</width>
-           <height>149</height>
+           <height>163</height>
           </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -426,6 +474,35 @@ background-color: rgba(230, 5, 64, 70)
             </property>
             <property name="text">
              <string>Caretaker</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+        <widget class="QFrame" name="frame_9">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+           <widget class="QLabel" name="error_label">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(230, 5, 64)</string>
+            </property>
+            <property name="text">
+             <string/>
             </property>
            </widget>
           </item>

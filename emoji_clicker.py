@@ -31,7 +31,6 @@ def change_scene(scene):
 def main_page():
     global score, increment, x, y, x_, y_, window
     moving = False
-
     running = True
     button = Button(160, 240.25, 65, 65, 'data/emoji_clicker/apple.png', 'data/emoji_clicker/button_click.wav')
     shop = Button(285, 50, 65, 65, 'data/emoji_clicker/shop.png', 'data/emoji_clicker/shop.wav')
@@ -92,7 +91,7 @@ def main_page():
         button.draw(screen)
         shop.check_hover(pygame.mouse.get_pos())
         shop.draw(screen)
-        if button.is_hovered or 5 < pygame.mouse.get_pos()[1] < 40:
+        if button.is_hovered or 5 < pygame.mouse.get_pos()[1] < 40 or shop.is_hovered:
             screen.blit(hover, pygame.mouse.get_pos())
         else:
             screen.blit(mouse, pygame.mouse.get_pos())
@@ -173,7 +172,7 @@ def shop_page():
         door.draw(screen)
         multiply.check_hover(pygame.mouse.get_pos())
         multiply.draw(screen)
-        if 5 < pygame.mouse.get_pos()[1] < 40:
+        if 5 < pygame.mouse.get_pos()[1] < 40 or door.is_hovered or multiply.is_hovered:
             screen.blit(hover, pygame.mouse.get_pos())
         else:
             screen.blit(mouse, pygame.mouse.get_pos())

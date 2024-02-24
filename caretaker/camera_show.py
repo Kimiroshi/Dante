@@ -31,9 +31,13 @@ def take_photo(win_name, savepath, show):
                 find_face(img_name, output=img_name)
                 break
         else:
-            cv2.imwrite(img_name, frame)
-            find_face(img_name, output=img_name)
-            break
+            cv2.imshow(win_name, frame)
+            if k % 256 == 27:
+                break
+            if k == 32:
+                cv2.imwrite(img_name, frame)
+                find_face(img_name, output=img_name)
+                break
 
     cam.release()
     cv2.destroyAllWindows()

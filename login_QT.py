@@ -1,5 +1,8 @@
 import sys
-from pathlib import Path
+import requests
+import configparser
+
+from launcher_QT import MainPage
 from circle import CircularProgress
 from multiprocessing import Process
 from caretaker.camera_show import take_photo
@@ -16,6 +19,10 @@ from ui_splash_screen import Ui_SplashScreen
 counter = 0
 
 
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+
 def progress():
     app = QApplication(sys.argv)
     window = SplashScreen()
@@ -27,7 +34,6 @@ class SplashScreen(QMainWindow, Ui_SplashScreen):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
 
@@ -42,7 +48,7 @@ class SplashScreen(QMainWindow, Ui_SplashScreen):
         self.progress.bg_color = QColor(68, 71, 90, 140)
         self.progress.setParent(self.centralwidget)
         self.progress.show()
-        self.version.setText('0.4.5')
+        self.version.setText('0.5')
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(15)
@@ -53,7 +59,7 @@ class SplashScreen(QMainWindow, Ui_SplashScreen):
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.update)
-        self.timer.start(80)
+        self.timer.start(30)
         self.show()
 
     def update(self):
@@ -71,6 +77,7 @@ class LoginPage(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.caretaker_btn.clicked.connect(self.caretaker)
+        self.main_page = MainPage()
 
         # удаление рамок
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -102,12 +109,46 @@ class LoginPage(QMainWindow, Ui_MainWindow):
         # перетаскивание окна
         self.frame_5.mouseMoveEvent = self.move_window
 
-    def caretaker(self):
-        if Path('caretaker/etalon.jpg').exists():
-            take_photo('rayan_gosling', 'caretaker/face.jpg', False)
-            compare_images('caretaker/etalon.jpg', 'caretaker/face.jpg')
+        # кнопка входа
+        self.submit_btn.clicked.connect(self.login_btn)
+
+    def login_btn(self):
+        login = self.login_edit.text()
+        password = self.password_edit.text()
+        check_account = requests.get("http://95.163.25.189:3556/accounts", params={"login": login, "password": password}).json()
+        if check_account.get("code") == 4:
+            pst = requests.post("http://95.163.25.189:3556/accounts", params={"login": login, "password": password}).json()
+            config['DEFAULT'] = {'login': login,
+                                 'password': password,
+                                 'token': pst["token"]}
+            with open('config.ini', 'w') as configfile:
+                config.write(configfile)
         else:
-            take_photo('Make etalon photo', 'caretaker/etalon.jpg', True)
+            config['DEFAULT'] = {'login': login,
+                                 'password': password,
+                                 'token': check_account["token"]}
+            with open('config.ini', 'w') as configfile:
+                config.write(configfile)
+        self.main_page.show()
+        self.close()
+
+    def caretaker(self):
+        take_photo('rayan_gosling', 'caretaker/face.jpg', False)
+        url = 'http://95.163.25.189:3556/photos'
+        files = {'file': ('face.jpg', open('caretaker/face.jpg', 'rb'))}
+
+        response = requests.get(url, files=files).json()
+
+        if response.get('code') == 16:
+            self.error_label.setText('Не найдено соответствий')
+        else:
+            config['DEFAULT'] = {'login': '',
+                                 'password': '',
+                                 'token': response["token"]}
+            with open('config.ini', 'w') as configfile:
+                config.write(configfile)
+            self.main_page.show()
+            self.close()
 
     def move_window(self, event):
         if not self.isMaximized():
@@ -131,7 +172,6 @@ class LoginPage(QMainWindow, Ui_MainWindow):
 if __name__ == '__main__':
     process = Process(target=progress)
     process.start()
-    from caretaker.face_compare import compare_images
     process.join()
     app = QApplication(sys.argv)
     window = LoginPage()
