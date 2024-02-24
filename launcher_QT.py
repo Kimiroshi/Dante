@@ -1,5 +1,5 @@
-import os
 import sys
+import subprocess
 
 import requests
 import webbrowser
@@ -24,12 +24,12 @@ class MainPage(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.verison_label.setText('Dante v0.5')
+        self.verison_label.setText('Dante v0.6')
         self.main_body_contents.setCurrentWidget(self.welcome_page)
 
-        # иконка на главной
+        # иконка на главной странице
         cur_time = datetime.now().strftime('%H')
-        if 22 >= int(cur_time) >= 4:
+        if 20 > int(cur_time) >= 4:
             self.welcome_label.setPixmap(QtGui.QPixmap("qt_icons/sun.svg"))
 
 
@@ -51,8 +51,7 @@ class MainPage(QMainWindow, Ui_MainWindow):
         self.shadow.setColor(QColor(0, 92, 157, 550))
         self.centralwidget.setGraphicsEffect(self.shadow)
 
-        # иконка + название
-        self.setWindowIcon(QtGui.QIcon('qt_icons/book.svg'))
+        #название
         self.setWindowTitle('Dante')
 
         # масштабирование
@@ -87,6 +86,8 @@ class MainPage(QMainWindow, Ui_MainWindow):
         self.authors_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.authors_page))
         self.settings.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.settings_page))
         self.settings_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.settings_page))
+        self.nums_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.nums_page))
+        self.nums_button_2.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.nums_page))
 
         # гиты авторов
         self.kimiroshi_button.clicked.connect(lambda: webbrowser.open('https://github.com/Kimiroshi', new=0))
@@ -94,7 +95,8 @@ class MainPage(QMainWindow, Ui_MainWindow):
         self.dima123kr.clicked.connect(lambda: webbrowser.open('https://github.com/Dima123kr', new=0))
 
         # игры
-        self.clicker_play.clicked.connect(lambda: os.system('emoji_clicker.py'))
+        self.clicker_play.clicked.connect(lambda: subprocess.Popen(['emoji_clicker.py'], shell=True, creationflags=subprocess.SW_HIDE))
+        self.nums_play.clicked.connect(lambda: subprocess.Popen(['2048.py'], shell=True, creationflags=subprocess.SW_HIDE))
 
         # показать пароль
         self.show_password.clicked.connect(self.hide_btn)
@@ -181,6 +183,9 @@ class MainPage(QMainWindow, Ui_MainWindow):
             self.search_edit.setText('')
         elif line == 'авторы':
             self.main_body_contents.setCurrentWidget(self.authors_page)
+            self.search_edit.setText('')
+        elif line == '2048':
+            self.main_body_contents.setCurrentWidget(self.nums_page)
             self.search_edit.setText('')
 
 

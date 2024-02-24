@@ -48,7 +48,7 @@ class SplashScreen(QMainWindow, Ui_SplashScreen):
         self.progress.bg_color = QColor(68, 71, 90, 140)
         self.progress.setParent(self.centralwidget)
         self.progress.show()
-        self.version.setText('0.5')
+        self.version.setText('v0.6')
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(15)
@@ -61,6 +61,10 @@ class SplashScreen(QMainWindow, Ui_SplashScreen):
         self.timer.timeout.connect(self.update)
         self.timer.start(30)
         self.show()
+
+        # иконка + название
+        self.setWindowIcon(QtGui.QIcon('qt_icons/codesandbox.svg'))
+        self.setWindowTitle('Loading')
 
     def update(self):
         global counter
@@ -91,7 +95,7 @@ class LoginPage(QMainWindow, Ui_MainWindow):
         self.centralwidget.setGraphicsEffect(self.shadow)
 
         # иконка + название
-        self.setWindowIcon(QtGui.QIcon('qt_icons/book.svg'))
+        self.setWindowIcon(QtGui.QIcon('qt_icons/codesandbox.svg'))
         self.setWindowTitle('Dante')
 
         # масштабирование
