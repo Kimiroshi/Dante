@@ -1,4 +1,7 @@
+import os
 import sys
+import time
+
 import requests
 import configparser
 
@@ -15,9 +18,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QGraphicsDropShadowEffect
 from qt_login_interface import Ui_MainWindow
 from ui_splash_screen import Ui_SplashScreen
 
-
 counter = 0
-
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -119,9 +120,11 @@ class LoginPage(QMainWindow, Ui_MainWindow):
     def login_btn(self):
         login = self.login_edit.text()
         password = self.password_edit.text()
-        check_account = requests.get("http://95.163.25.189:3556/accounts", params={"login": login, "password": password}).json()
+        check_account = requests.get("http://95.163.25.189:3556/api/launcher-api/v1/accounts",
+                                     params={"login": login, "password": password}).json()
         if check_account.get("code") == 4:
-            pst = requests.post("http://95.163.25.189:3556/accounts", params={"login": login, "password": password}).json()
+            pst = requests.post("http://95.163.25.189:3556/api/launcher-api/v1/accounts",
+                                params={"login": login, "password": password}).json()
             config['DEFAULT'] = {'login': login,
                                  'password': password,
                                  'token': pst["token"]}
@@ -137,22 +140,25 @@ class LoginPage(QMainWindow, Ui_MainWindow):
         self.close()
 
     def caretaker(self):
-        take_photo('rayan_gosling', 'caretaker/face.jpg', False)
-        url = 'http://95.163.25.189:3556/photos'
-        files = {'file': ('face.jpg', open('caretaker/face.jpg', 'rb'))}
+        err = take_photo('Take photo - spacebar. Esc - exit', 'caretaker/face.jpg', False)
+        if err == 'фото не сделали':
+            self.error_label.setText('Вы не сделали фото')
 
-        response = requests.get(url, files=files).json()
-
-        if response.get('code') == 16:
-            self.error_label.setText('Не найдено соответствий')
         else:
-            config['DEFAULT'] = {'login': '',
-                                 'password': '',
-                                 'token': response["token"]}
-            with open('config.ini', 'w') as configfile:
-                config.write(configfile)
-            self.main_page.show()
-            self.close()
+            url = 'http://95.163.25.189:3556/api/launcher-api/v1/photos'
+            files = {'file': ('face.jpg', open('caretaker/face.jpg', 'rb'))}
+
+            response = requests.get(url, files=files).json()
+            if response.get('code') == 16:
+                self.error_label.setText('Не найдено соответствий')
+            else:
+                config['DEFAULT'] = {'login': response['login'],
+                                     'password': response['password'],
+                                     'token': response["token"]}
+                with open('config.ini', 'w') as configfile:
+                    config.write(configfile)
+                self.main_page.show()
+                self.close()
 
     def move_window(self, event):
         if not self.isMaximized():

@@ -24,7 +24,9 @@ def take_photo(win_name, savepath, show):
             cv2.imshow(win_name, frame)
         k = cv2.waitKey(1)
         if k % 256 == 27:
-            break
+            cam.release()
+            cv2.destroyAllWindows()
+            return 'фото не сделали'
         if show:
             if k == 32:
                 cv2.imwrite(img_name, frame)
@@ -33,7 +35,9 @@ def take_photo(win_name, savepath, show):
         else:
             cv2.imshow(win_name, frame)
             if k % 256 == 27:
-                break
+                cam.release()
+                cv2.destroyAllWindows()
+                return 'фото не сделали'
             if k == 32:
                 cv2.imwrite(img_name, frame)
                 find_face(img_name, output=img_name)

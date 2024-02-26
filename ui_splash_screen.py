@@ -33,10 +33,10 @@ class Ui_SplashScreen(object):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.circle_bg = QtWidgets.QFrame(self.container)
         self.circle_bg.setStyleSheet("QFrame{\n"
-"    color: rgb(230, 5, 64);\n"
-"    background-color: rgb(24, 24, 36);\n"
-"    border-radius: 120px;\n"
-"}")
+                                     "    color: rgb(230, 5, 64);\n"
+                                     "    background-color: rgb(24, 24, 36);\n"
+                                     "    border-radius: 120px;\n"
+                                     "}")
         self.circle_bg.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.circle_bg.setFrameShadow(QtWidgets.QFrame.Raised)
         self.circle_bg.setObjectName("circle_bg")

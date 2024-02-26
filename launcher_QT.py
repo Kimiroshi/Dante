@@ -1,5 +1,7 @@
+import os
 import sys
 import subprocess
+import time
 
 import requests
 import webbrowser
@@ -16,7 +18,6 @@ from datetime import datetime
 from qt_main_interface import Ui_MainWindow
 from caretaker.camera_show import take_photo
 
-
 config = configparser.ConfigParser()
 
 
@@ -32,10 +33,11 @@ class MainPage(QMainWindow, Ui_MainWindow):
         if 20 > int(cur_time) >= 4:
             self.welcome_label.setPixmap(QtGui.QPixmap("qt_icons/sun.svg"))
 
-
         config.read('config.ini')
-        url = 'http://95.163.25.189:3556/finances'
+        url = 'http://95.163.25.189:3556/api/launcher-api/v1/finances'
         response = requests.get(url, params={"token": config['DEFAULT']['token']})
+        self.user_password.setText(config['DEFAULT']['password'])
+        self.user_login.setText(config['DEFAULT']['login'])
         self.cur_balance = f'{response.json()["balance"]} руб'
         self.balance.setText(self.cur_balance)
         self.balance_label.setText(self.cur_balance)
@@ -51,7 +53,7 @@ class MainPage(QMainWindow, Ui_MainWindow):
         self.shadow.setColor(QColor(0, 92, 157, 550))
         self.centralwidget.setGraphicsEffect(self.shadow)
 
-        #название
+        # название
         self.setWindowTitle('Dante')
 
         # масштабирование
@@ -88,6 +90,8 @@ class MainPage(QMainWindow, Ui_MainWindow):
         self.settings_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.settings_page))
         self.nums_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.nums_page))
         self.nums_button_2.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.nums_page))
+        self.ping_pong_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.ping_pong_page))
+        self.ping_pong_button_2.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.ping_pong_page))
 
         # гиты авторов
         self.kimiroshi_button.clicked.connect(lambda: webbrowser.open('https://github.com/Kimiroshi', new=0))
@@ -95,8 +99,16 @@ class MainPage(QMainWindow, Ui_MainWindow):
         self.dima123kr.clicked.connect(lambda: webbrowser.open('https://github.com/Dima123kr', new=0))
 
         # игры
-        self.clicker_play.clicked.connect(lambda: subprocess.Popen(['emoji_clicker.py'], shell=True, creationflags=subprocess.SW_HIDE))
-        self.nums_play.clicked.connect(lambda: subprocess.Popen(['2048.py'], shell=True, creationflags=subprocess.SW_HIDE))
+        self.clicker_play.clicked.connect(
+            lambda: subprocess.Popen(['emoji_clicker.py'], shell=True, creationflags=subprocess.SW_HIDE))
+        self.nums_play.clicked.connect(
+            lambda: subprocess.Popen(['2048.py'], shell=True, creationflags=subprocess.SW_HIDE))
+        self.life_play.clicked.connect(
+            lambda: subprocess.Popen(['life.py'], shell=True, creationflags=subprocess.SW_HIDE))
+        self.dino_play.clicked.connect(
+            lambda: subprocess.Popen(['dino.py'], shell=True, creationflags=subprocess.SW_HIDE))
+        self.ping_pong_play.clicked.connect(
+            lambda: subprocess.Popen(['ping_pong.py'], shell=True, creationflags=subprocess.SW_HIDE))
 
         # показать пароль
         self.show_password.clicked.connect(self.hide_btn)
@@ -131,12 +143,13 @@ class MainPage(QMainWindow, Ui_MainWindow):
         config.read('config.ini')
         take_photo('Make etalon photo. Take photo - spacebar. Esc - exit', 'caretaker/etalon.jpg', True)
         if Path('caretaker/etalon.jpg').exists():
-            url = 'http://95.163.25.189:3556/photos'
+            url = 'http://95.163.25.189:3556/api/launcher-api/v1/photos'
             files = {'file': ('etalon.jpg', open('caretaker/etalon.jpg', 'rb'))}
 
             response = requests.post(url, files=files, params={"token": config['DEFAULT']['token']})
             print(response.text)
             print(config['DEFAULT']['token'])
+            os.remove('caretaker/face.jpg')
 
     # анимация sidebar`a
     def slide_menu(self):
@@ -187,7 +200,9 @@ class MainPage(QMainWindow, Ui_MainWindow):
         elif line == '2048':
             self.main_body_contents.setCurrentWidget(self.nums_page)
             self.search_edit.setText('')
-
+        elif line == 'пинг-понг':
+            self.main_body_contents.setCurrentWidget(self.ping_pong_page)
+            self.search_edit.setText('')
 
 
 if __name__ == '__main__':

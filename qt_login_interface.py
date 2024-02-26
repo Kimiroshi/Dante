@@ -19,8 +19,8 @@ class Ui_MainWindow(object):
         font.setPointSize(8)
         MainWindow.setFont(font)
         MainWindow.setStyleSheet("*{\n"
-"    border: none;\n"
-"}")
+                                 "    border: none;\n"
+                                 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("background-color: rgb(24, 24, 36)")
         self.centralwidget.setObjectName("centralwidget")
@@ -52,7 +52,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label.setFont(font)
         self.label.setStyleSheet("color: white\n"
-"")
+                                 "")
         self.label.setObjectName("label")
         self.horizontalLayout_3.addWidget(self.label)
         self.horizontalLayout.addWidget(self.frame_7)
@@ -91,7 +91,7 @@ class Ui_MainWindow(object):
         self.close_window_button.setIconSize(QtCore.QSize(30, 30))
         self.close_window_button.setObjectName("close_window_button")
         self.horizontalLayout_2.addWidget(self.close_window_button)
-        self.horizontalLayout.addWidget(self.frame_6, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignTop)
+        self.horizontalLayout.addWidget(self.frame_6, 0, QtCore.Qt.AlignRight | QtCore.Qt.AlignTop)
         self.verticalLayout.addWidget(self.frame_5, 0, QtCore.Qt.AlignTop)
         self.frame_4 = QtWidgets.QFrame(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -133,7 +133,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.login_edit.setFont(font)
         self.login_edit.setStyleSheet("color: white;\n"
-"border-bottom: 3px solid rgb(230, 5, 64);")
+                                      "border-bottom: 3px solid rgb(230, 5, 64);")
         self.login_edit.setObjectName("login_edit")
         self.verticalLayout_2.addWidget(self.login_edit, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout_5.addWidget(self.frame)
@@ -158,7 +158,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.password_edit.setFont(font)
         self.password_edit.setStyleSheet("color: white;\n"
-"border-bottom: 3px solid rgb(230, 5, 64)")
+                                         "border-bottom: 3px solid rgb(230, 5, 64)")
         self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.password_edit.setObjectName("password_edit")
         self.verticalLayout_3.addWidget(self.password_edit, 0, QtCore.Qt.AlignHCenter)
@@ -189,16 +189,16 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.submit_btn.setFont(font)
         self.submit_btn.setStyleSheet("QPushButton{\n"
-"border: 3px solid rgb(230, 5, 64);\n"
-"border-radius: 6px;\n"
-"color: rgb(128, 128, 128)\n"
-"}\n"
-"QPushButton:hover{\n"
-"border: 3px solid rgb(230, 5, 64);\n"
-"border-radius: 6px;\n"
-"color: rgb(128, 128, 128);\n"
-"background-color: rgba(230, 5, 64, 70)\n"
-"}")
+                                      "border: 3px solid rgb(230, 5, 64);\n"
+                                      "border-radius: 6px;\n"
+                                      "color: rgb(128, 128, 128)\n"
+                                      "}\n"
+                                      "QPushButton:hover{\n"
+                                      "border: 3px solid rgb(230, 5, 64);\n"
+                                      "border-radius: 6px;\n"
+                                      "color: rgb(128, 128, 128);\n"
+                                      "background-color: rgba(230, 5, 64, 70)\n"
+                                      "}")
         self.submit_btn.setObjectName("submit_btn")
         self.verticalLayout_4.addWidget(self.submit_btn)
         self.label_3 = QtWidgets.QLabel(self.frame_3)
@@ -218,16 +218,16 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.caretaker_btn.setFont(font)
         self.caretaker_btn.setStyleSheet("QPushButton{\n"
-"border: 3px solid rgb(230, 5, 64);\n"
-"border-radius: 6px;\n"
-"color: rgb(128, 128, 128)\n"
-"}\n"
-"QPushButton:hover{\n"
-"border: 3px solid rgb(230, 5, 64);\n"
-"border-radius: 6px;\n"
-"color: rgb(128, 128, 128);\n"
-"background-color: rgba(230, 5, 64, 70)\n"
-"}")
+                                         "border: 3px solid rgb(230, 5, 64);\n"
+                                         "border-radius: 6px;\n"
+                                         "color: rgb(128, 128, 128)\n"
+                                         "}\n"
+                                         "QPushButton:hover{\n"
+                                         "border: 3px solid rgb(230, 5, 64);\n"
+                                         "border-radius: 6px;\n"
+                                         "color: rgb(128, 128, 128);\n"
+                                         "background-color: rgba(230, 5, 64, 70)\n"
+                                         "}")
         self.caretaker_btn.setObjectName("caretaker_btn")
         self.verticalLayout_4.addWidget(self.caretaker_btn)
         self.verticalLayout_5.addWidget(self.frame_3, 0, QtCore.Qt.AlignHCenter)
@@ -246,8 +246,8 @@ class Ui_MainWindow(object):
         self.error_label.setStyleSheet("color: rgb(230, 5, 64)")
         self.error_label.setText("")
         self.error_label.setObjectName("error_label")
-        self.verticalLayout_6.addWidget(self.error_label, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
-        self.verticalLayout_5.addWidget(self.frame_9, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.verticalLayout_6.addWidget(self.error_label, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
+        self.verticalLayout_5.addWidget(self.frame_9, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
         self.verticalLayout.addWidget(self.frame_4)
         self.frame_8 = QtWidgets.QFrame(self.centralwidget)
         self.frame_8.setMinimumSize(QtCore.QSize(10, 10))
@@ -255,7 +255,7 @@ class Ui_MainWindow(object):
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName("frame_8")
-        self.verticalLayout.addWidget(self.frame_8, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
+        self.verticalLayout.addWidget(self.frame_8, 0, QtCore.Qt.AlignRight | QtCore.Qt.AlignBottom)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)

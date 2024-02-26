@@ -172,7 +172,7 @@ def game_scene():
                             ((WIDTH - 13, 15), (WIDTH - 15, 13), (WIDTH - 27, 25), (WIDTH - 25, 27)))
         pygame.display.flip()
         window.position = (x, y)
-        screen.fill((9, 5, 13))
+        screen.fill(BACKGROUND_COLOR)
 
 
 def end_scene():
@@ -185,7 +185,7 @@ def end_scene():
         font.set_bold(True)
         text = font.render("Игра окончена!", False, (230, 5, 64))
         text2 = font.render("Чтоб начать новую - нажмите R", False, (230, 5, 64))
-        screen.blit(text, (125, HEIGHT//3))
+        screen.blit(text, (125, HEIGHT // 3))
         screen.blit(text2, (40, HEIGHT // 3 + 45))
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -206,6 +206,7 @@ def end_scene():
                 if moving:
                     x += event.pos[0] - x_
                     y += event.pos[1] - y_
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_r:
                     start_new_game()
@@ -227,7 +228,7 @@ def end_scene():
                             ((WIDTH - 13, 15), (WIDTH - 15, 13), (WIDTH - 27, 25), (WIDTH - 25, 27)))
         pygame.display.flip()
         window.position = (x, y)
-        screen.fill((9, 5, 13))
+        screen.fill(BACKGROUND_COLOR)
 
 
 def change_scene(scene):
