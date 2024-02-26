@@ -25,7 +25,7 @@ class MainPage(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.verison_label.setText('Dante v1.0')
+        self.verison_label.setText('Dante v1.2.1')
         self.main_body_contents.setCurrentWidget(self.welcome_page)
 
         # иконка на главной странице

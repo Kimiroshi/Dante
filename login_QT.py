@@ -49,7 +49,7 @@ class SplashScreen(QMainWindow, Ui_SplashScreen):
         self.progress.bg_color = QColor(68, 71, 90, 140)
         self.progress.setParent(self.centralwidget)
         self.progress.show()
-        self.version.setText('v1.0')
+        self.version.setText('v1.2.1')
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(15)

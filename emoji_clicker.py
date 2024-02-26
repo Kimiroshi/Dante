@@ -47,6 +47,7 @@ def main_page():
                         time.sleep(0.1)
                         running = False
                         change_scene(None)
+
                     elif 5 < y_ < 40:
                         moving = True
 
