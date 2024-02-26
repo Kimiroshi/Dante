@@ -11,7 +11,7 @@ from pathlib import Path
 from PyQt5 import QtCore
 from PyQt5.QtGui import QColor
 from PyQt5.QtCore import Qt, QPropertyAnimation
-from PyQt5.QtWidgets import QMainWindow, QGraphicsDropShadowEffect, QSizeGrip, QLineEdit, QApplication
+from PyQt5.QtWidgets import QMainWindow, QGraphicsDropShadowEffect, QSizeGrip, QLineEdit
 
 from datetime import datetime
 from qt_main_interface import Ui_MainWindow
@@ -206,9 +206,3 @@ class MainPage(QMainWindow, Ui_MainWindow):
         config.read('config.ini')
         self.user_password.setText(config['DEFAULT']['password'])
         self.user_login.setText(config['DEFAULT']['login'])
-
-
-app = QApplication(sys.argv)
-window = MainPage()
-window.show()
-sys.exit(app.exec_())
