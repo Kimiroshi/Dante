@@ -455,7 +455,7 @@ QToolBox::tab {
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignLeft">
+                    <item alignment="Qt::AlignLeft|Qt::AlignTop">
                      <widget class="QPushButton" name="ping_pong_button">
                       <property name="minimumSize">
                        <size>
@@ -487,6 +487,36 @@ QToolBox::tab {
                        <size>
                         <width>23</width>
                         <height>23</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignLeft|Qt::AlignBottom">
+                     <widget class="QPushButton" name="maze_button">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color: white</string>
+                      </property>
+                      <property name="text">
+                       <string>Лабиринт</string>
+                      </property>
+                      <property name="icon">
+                       <iconset>
+                        <normaloff>qt_icons/maze.png</normaloff>qt_icons/maze.png</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>22</height>
                        </size>
                       </property>
                      </widget>
@@ -1031,7 +1061,7 @@ border-bottom: 3px solid rgb(230, 5, 64)</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="clicker_page">
           <property name="font">
@@ -1131,6 +1161,115 @@ background-color: rgba(230, 5, 64, 70)
                </widget>
               </item>
              </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="maze_page">
+          <layout class="QVBoxLayout" name="verticalLayout_28">
+           <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+            <widget class="QFrame" name="frame_30">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>3</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_27">
+              <item alignment="Qt::AlignTop">
+               <widget class="QLabel" name="label_28">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>129</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap>qt_icons/maze_2.png</pixmap>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+            <widget class="QLabel" name="label_29">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>8</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>17</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(230, 5, 64)</string>
+             </property>
+             <property name="text">
+              <string>Лабиринт</string>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignLeft|Qt::AlignTop">
+            <widget class="QPushButton" name="maze_play">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>76</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>18</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+border: 3px solid rgb(230, 5, 64);
+border-radius: 10px;
+color: rgb(230, 5, 64)
+}
+QPushButton:hover{
+border: 3px solid rgb(230, 5, 64);
+border-radius: 10px;
+color: rgb(230, 5, 64);
+background-color: rgba(230, 5, 64, 70)
+}</string>
+             </property>
+             <property name="text">
+              <string> Играть </string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -2361,6 +2500,38 @@ border-radius: 6px;</string>
                      <width>21</width>
                      <height>30</height>
                     </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="maze_button_2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: white;
+border: 3px solid rgb(230, 5, 64);
+border-radius: 6px;</string>
+                   </property>
+                   <property name="text">
+                    <string>Лабиринт</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>qt_icons/maze.png</normaloff>qt_icons/maze.png</iconset>
                    </property>
                   </widget>
                  </item>

@@ -2,6 +2,7 @@
 import time
 import pygame
 import socket
+import requests
 import configparser
 from pygame._sdl2 import Window
 
@@ -38,8 +39,9 @@ pygame.draw.polygon(screen, (230, 5, 64),
                     ((WIDTH - 13, 15), (WIDTH - 15, 13), (WIDTH - 27, 25), (WIDTH - 25, 27)))
 pygame.display.update()
 
+port = requests.get('https://sab.purpleglass.ru/api/coordinator-api/v1/').json()['port']
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('localhost', 3837))
+client.connect(('95.163.25.189', port))
 
 config = configparser.ConfigParser()
 config.read('config.ini')

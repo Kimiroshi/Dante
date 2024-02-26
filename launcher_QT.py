@@ -83,6 +83,8 @@ class MainPage(QMainWindow, Ui_MainWindow):
         self.nums_button_2.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.nums_page))
         self.ping_pong_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.ping_pong_page))
         self.ping_pong_button_2.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.ping_pong_page))
+        self.maze_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.maze_page))
+        self.maze_button_2.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.maze_page))
 
         # гиты авторов
         self.kimiroshi_button.clicked.connect(lambda: webbrowser.open('https://github.com/Kimiroshi', new=0))
@@ -100,6 +102,8 @@ class MainPage(QMainWindow, Ui_MainWindow):
             lambda: subprocess.Popen(['dino.py'], shell=True, creationflags=subprocess.SW_HIDE))
         self.ping_pong_play.clicked.connect(
             lambda: subprocess.Popen(['ping_pong.py'], shell=True, creationflags=subprocess.SW_HIDE))
+        self.maze_play.clicked.connect(
+            lambda: subprocess.Popen(['maze.py'], shell=True, creationflags=subprocess.SW_HIDE))
 
         # показать пароль
         self.show_password.clicked.connect(self.hide_btn)
@@ -194,8 +198,17 @@ class MainPage(QMainWindow, Ui_MainWindow):
         elif line == 'пинг-понг':
             self.main_body_contents.setCurrentWidget(self.ping_pong_page)
             self.search_edit.setText('')
+        elif line == 'лабиринт':
+            self.main_body_contents.setCurrentWidget(self.maze_page)
+            self.search_edit.setText('')
 
     def refresh_info(self):
         config.read('config.ini')
         self.user_password.setText(config['DEFAULT']['password'])
         self.user_login.setText(config['DEFAULT']['login'])
+
+
+app = QApplication(sys.argv)
+window = MainPage()
+window.show()
+sys.exit(app.exec_())
