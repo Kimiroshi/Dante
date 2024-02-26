@@ -1,15 +1,15 @@
 # client.py
 import time
-
 import pygame
 import socket
+import configparser
 from pygame._sdl2 import Window
 
 
 class Paddle:
     def __init__(self, x, y):
         self.rect = pygame.Rect(x, y, 15, 80)
-        self.speed = 2
+        self.speed = 5
 
     def move_paddle(self, action):
         if action == "up" and self.rect.top > 36:
@@ -39,7 +39,13 @@ pygame.draw.polygon(screen, (230, 5, 64),
 pygame.display.update()
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('95.163.25.189', 5551))
+client.connect(('localhost', 3837))
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+player_id = config['DEFAULT']['id']
+client.sendall(player_id.encode())
 
 player_number = int(client.recv(1024).decode())  # Получаем номер игрока
 paddle = Paddle(50, 250) if player_number == 1 else Paddle(735, 250)

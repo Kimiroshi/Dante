@@ -49,7 +49,7 @@ class SplashScreen(QMainWindow, Ui_SplashScreen):
         self.progress.bg_color = QColor(68, 71, 90, 140)
         self.progress.setParent(self.centralwidget)
         self.progress.show()
-        self.version.setText('v0.6')
+        self.version.setText('v1.0')
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(15)
@@ -120,45 +120,53 @@ class LoginPage(QMainWindow, Ui_MainWindow):
     def login_btn(self):
         login = self.login_edit.text()
         password = self.password_edit.text()
-        check_account = requests.get("http://95.163.25.189:3556/api/launcher-api/v1/accounts",
+        check_account = requests.get("https://sab.purpleglass.ru/api/launcher-api/v1/accounts",
                                      params={"login": login, "password": password}).json()
         if check_account.get("code") == 4:
-            pst = requests.post("http://95.163.25.189:3556/api/launcher-api/v1/accounts",
+            pst = requests.post("https://sab.purpleglass.ru/api/launcher-api/v1/accounts",
                                 params={"login": login, "password": password}).json()
             config['DEFAULT'] = {'login': login,
                                  'password': password,
-                                 'token': pst["token"]}
+                                 'token': pst["token"],
+                                 'id': pst['id']}
             with open('config.ini', 'w') as configfile:
                 config.write(configfile)
         else:
             config['DEFAULT'] = {'login': login,
                                  'password': password,
-                                 'token': check_account["token"]}
+                                 'token': check_account["token"],
+                                 'id': check_account['id']}
             with open('config.ini', 'w') as configfile:
                 config.write(configfile)
         self.main_page.show()
+        self.main_page.refresh_info()
         self.close()
 
     def caretaker(self):
-        err = take_photo('Take photo - spacebar. Esc - exit', 'caretaker/face.jpg', False)
-        if err == 'фото не сделали':
-            self.error_label.setText('Вы не сделали фото')
+        try:
+            err = take_photo('Take photo - spacebar. Esc - exit', 'caretaker/face.jpg', False)
+            if err == 'фото не сделали':
+                self.error_label.setText('Вы не сделали фото')
 
-        else:
-            url = 'http://95.163.25.189:3556/api/launcher-api/v1/photos'
-            files = {'file': ('face.jpg', open('caretaker/face.jpg', 'rb'))}
-
-            response = requests.get(url, files=files).json()
-            if response.get('code') == 16:
-                self.error_label.setText('Не найдено соответствий')
             else:
-                config['DEFAULT'] = {'login': response['login'],
-                                     'password': response['password'],
-                                     'token': response["token"]}
-                with open('config.ini', 'w') as configfile:
-                    config.write(configfile)
-                self.main_page.show()
-                self.close()
+                url = 'https://sab.purpleglass.ru/api/launcher-api/v1/photos'
+                files = {'file': ('face.jpg', open('caretaker/face.jpg', 'rb'))}
+
+                response = requests.get(url, files=files).json()
+                if response.get('code') == 16:
+                    self.error_label.setText('Не найдено соответствий')
+                else:
+                    config['DEFAULT'] = {'login': response['login'],
+                                         'password': response['password'],
+                                         'token': response["token"],
+                                         'id': response['id']}
+                    with open('config.ini', 'w') as configfile:
+                        config.write(configfile)
+                    self.main_page.show()
+                    self.main_page.refresh_info()
+                    self.close()
+        except Exception as ex:
+            print(ex)
 
     def move_window(self, event):
         if not self.isMaximized():

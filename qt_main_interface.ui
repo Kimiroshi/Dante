@@ -923,35 +923,6 @@ border-bottom: 3px solid rgb(230, 5, 64)</string>
                </property>
               </widget>
              </item>
-             <item>
-              <spacer name="horizontalSpacer">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>28</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QLabel" name="balance">
-               <property name="font">
-                <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: gray</string>
-               </property>
-               <property name="text">
-                <string>0 руб</string>
-               </property>
-              </widget>
-             </item>
             </layout>
            </widget>
           </item>
@@ -1060,7 +1031,7 @@ border-bottom: 3px solid rgb(230, 5, 64)</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="clicker_page">
           <property name="font">
@@ -1094,6 +1065,23 @@ border-bottom: 3px solid rgb(230, 5, 64)</string>
              </property>
              <property name="pixmap">
               <pixmap>qt_icons/clicker_phone.png</pixmap>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="label_27">
+             <property name="font">
+              <font>
+               <pointsize>17</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(230, 5, 64)</string>
+             </property>
+             <property name="text">
+              <string>Кликер</string>
              </property>
             </widget>
            </item>
@@ -1139,23 +1127,6 @@ background-color: rgba(230, 5, 64, 70)
                 </property>
                 <property name="text">
                  <string> Играть </string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="clicker_price">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(230, 5, 64)</string>
-                </property>
-                <property name="text">
-                 <string>Цена: 0 руб</string>
                 </property>
                </widget>
               </item>
@@ -1206,6 +1177,23 @@ background-color: rgba(230, 5, 64, 70)
              </property>
             </widget>
            </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="life_label">
+             <property name="font">
+              <font>
+               <pointsize>17</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(230, 5, 64)</string>
+             </property>
+             <property name="text">
+              <string>Жизнь</string>
+             </property>
+            </widget>
+           </item>
            <item alignment="Qt::AlignLeft|Qt::AlignTop">
             <widget class="QFrame" name="frame_13">
              <property name="sizePolicy">
@@ -1248,23 +1236,6 @@ background-color: rgba(230, 5, 64, 70)
                 </property>
                 <property name="text">
                  <string> Играть </string>
-                </property>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignRight">
-               <widget class="QLabel" name="life_price">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(230, 5, 64)</string>
-                </property>
-                <property name="text">
-                 <string>Цена: 0 руб</string>
                 </property>
                </widget>
               </item>
@@ -1323,6 +1294,12 @@ background-color: rgba(230, 5, 64, 70)
               </item>
               <item>
                <widget class="QLabel" name="label_25">
+                <property name="minimumSize">
+                 <size>
+                  <width>620</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string/>
                 </property>
@@ -1332,6 +1309,23 @@ background-color: rgba(230, 5, 64, 70)
                </widget>
               </item>
              </layout>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="dino_label">
+             <property name="font">
+              <font>
+               <pointsize>17</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(230, 5, 64)</string>
+             </property>
+             <property name="text">
+              <string>Динозаврик</string>
+             </property>
             </widget>
            </item>
            <item alignment="Qt::AlignLeft|Qt::AlignTop">
@@ -1376,23 +1370,6 @@ background-color: rgba(230, 5, 64, 70)
                 </property>
                 <property name="text">
                  <string> Играть </string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="dino_price">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(230, 5, 64)</string>
-                </property>
-                <property name="text">
-                 <string>Цена: 0 руб</string>
                 </property>
                </widget>
               </item>
@@ -2097,73 +2074,7 @@ background-color: rgba(230, 5, 64, 70)</string>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_20">
-                 <item>
-                  <widget class="QLabel" name="balance_label">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: white</string>
-                   </property>
-                   <property name="text">
-                    <string>Баланс: 0 руб</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="balance_btn">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>212</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>10</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-border: 3px solid rgb(230, 5, 64);
-border-radius: 6px;
-color: white
-}
-QPushButton:hover{
-border: 3px solid rgb(230, 5, 64);
-border-radius: 6px;
-color: white;
-background-color: rgba(230, 5, 64, 70)
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Пополнить баланс</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                <layout class="QVBoxLayout" name="verticalLayout_20"/>
                </widget>
               </item>
              </layout>
@@ -2463,14 +2374,58 @@ border-radius: 6px;</string>
          </widget>
          <widget class="QWidget" name="ping_pong_page">
           <layout class="QVBoxLayout" name="verticalLayout_25">
-           <item alignment="Qt::AlignHCenter">
-            <widget class="QLabel" name="label_26">
-             <property name="text">
-              <string/>
+           <item alignment="Qt::AlignTop">
+            <widget class="QFrame" name="frame_29">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
              </property>
-             <property name="pixmap">
-              <pixmap>qt_icons/ping_pong_2.png</pixmap>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
              </property>
+             <layout class="QVBoxLayout" name="verticalLayout_26">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="label_26">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap>qt_icons/ping_pong_2.png</pixmap>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+               <widget class="QLabel" name="ping_pong_label">
+                <property name="font">
+                 <font>
+                  <pointsize>17</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(230, 5, 64)</string>
+                </property>
+                <property name="text">
+                 <string>Пинг-понг</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
            <item alignment="Qt::AlignLeft|Qt::AlignTop">
@@ -2488,6 +2443,21 @@ border-radius: 6px;</string>
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_19">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QPushButton" name="ping_pong_play">
                 <property name="font">
@@ -2518,23 +2488,6 @@ background-color: rgba(230, 5, 64, 70)
                 </property>
                </widget>
               </item>
-              <item>
-               <widget class="QLabel" name="ping_pong_price">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(230, 5, 64)</string>
-                </property>
-                <property name="text">
-                 <string>Цена: 0 руб</string>
-                </property>
-               </widget>
-              </item>
              </layout>
             </widget>
            </item>
@@ -2549,6 +2502,23 @@ background-color: rgba(230, 5, 64, 70)
              </property>
              <property name="pixmap">
               <pixmap>qt_icons/nums.jpg</pixmap>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="nums_label">
+             <property name="font">
+              <font>
+               <pointsize>17</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(230, 5, 64)</string>
+             </property>
+             <property name="text">
+              <string>2048</string>
              </property>
             </widget>
            </item>
@@ -2594,23 +2564,6 @@ background-color: rgba(230, 5, 64, 70)
                 </property>
                 <property name="text">
                  <string> Играть </string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="nums_price">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(230, 5, 64)</string>
-                </property>
-                <property name="text">
-                 <string>Цена: 0 руб</string>
                 </property>
                </widget>
               </item>

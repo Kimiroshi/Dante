@@ -1,7 +1,6 @@
 import os
-import sys
 import subprocess
-import time
+import sys
 
 import requests
 import webbrowser
@@ -12,35 +11,27 @@ from pathlib import Path
 from PyQt5 import QtCore
 from PyQt5.QtGui import QColor
 from PyQt5.QtCore import Qt, QPropertyAnimation
-from PyQt5.QtWidgets import QMainWindow, QGraphicsDropShadowEffect, QSizeGrip, QApplication, QLineEdit
+from PyQt5.QtWidgets import QMainWindow, QGraphicsDropShadowEffect, QSizeGrip, QLineEdit, QApplication
 
 from datetime import datetime
 from qt_main_interface import Ui_MainWindow
 from caretaker.camera_show import take_photo
 
 config = configparser.ConfigParser()
+config.read('config.ini')
 
 
 class MainPage(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.verison_label.setText('Dante v0.6')
+        self.verison_label.setText('Dante v1.0')
         self.main_body_contents.setCurrentWidget(self.welcome_page)
 
         # иконка на главной странице
         cur_time = datetime.now().strftime('%H')
         if 20 > int(cur_time) >= 4:
             self.welcome_label.setPixmap(QtGui.QPixmap("qt_icons/sun.svg"))
-
-        config.read('config.ini')
-        url = 'http://95.163.25.189:3556/api/launcher-api/v1/finances'
-        response = requests.get(url, params={"token": config['DEFAULT']['token']})
-        self.user_password.setText(config['DEFAULT']['password'])
-        self.user_login.setText(config['DEFAULT']['login'])
-        self.cur_balance = f'{response.json()["balance"]} руб'
-        self.balance.setText(self.cur_balance)
-        self.balance_label.setText(self.cur_balance)
 
         # удаление рамок
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -143,7 +134,7 @@ class MainPage(QMainWindow, Ui_MainWindow):
         config.read('config.ini')
         take_photo('Make etalon photo. Take photo - spacebar. Esc - exit', 'caretaker/etalon.jpg', True)
         if Path('caretaker/etalon.jpg').exists():
-            url = 'http://95.163.25.189:3556/api/launcher-api/v1/photos'
+            url = 'https://sab.purpleglass.ru/api/launcher-api/v1/photos'
             files = {'file': ('etalon.jpg', open('caretaker/etalon.jpg', 'rb'))}
 
             response = requests.post(url, files=files, params={"token": config['DEFAULT']['token']})
@@ -204,9 +195,7 @@ class MainPage(QMainWindow, Ui_MainWindow):
             self.main_body_contents.setCurrentWidget(self.ping_pong_page)
             self.search_edit.setText('')
 
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = MainPage()
-    window.show()
-    sys.exit(app.exec_())
+    def refresh_info(self):
+        config.read('config.ini')
+        self.user_password.setText(config['DEFAULT']['password'])
+        self.user_login.setText(config['DEFAULT']['login'])
