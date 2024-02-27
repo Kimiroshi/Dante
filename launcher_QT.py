@@ -25,7 +25,7 @@ class MainPage(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.verison_label.setText('Dante v1.2.1')
+        self.verison_label.setText('Dante v1.2.5')
         self.main_body_contents.setCurrentWidget(self.welcome_page)
 
         # иконка на главной странице
@@ -85,6 +85,8 @@ class MainPage(QMainWindow, Ui_MainWindow):
         self.ping_pong_button_2.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.ping_pong_page))
         self.maze_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.maze_page))
         self.maze_button_2.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.maze_page))
+        self.aim_button.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.page_3))
+        self.aim_button_2.clicked.connect(lambda: self.main_body_contents.setCurrentWidget(self.page_3))
 
         # гиты авторов
         self.kimiroshi_button.clicked.connect(lambda: webbrowser.open('https://github.com/Kimiroshi', new=0))
@@ -104,6 +106,8 @@ class MainPage(QMainWindow, Ui_MainWindow):
             lambda: subprocess.Popen(['ping_pong.py'], shell=True, creationflags=subprocess.SW_HIDE))
         self.maze_play.clicked.connect(
             lambda: subprocess.Popen(['maze.py'], shell=True, creationflags=subprocess.SW_HIDE))
+        self.aim_play.clicked.connect(
+            lambda: subprocess.Popen(['aim.py'], shell=True, creationflags=subprocess.SW_HIDE))
 
         # показать пароль
         self.show_password.clicked.connect(self.hide_btn)

@@ -491,8 +491,27 @@ QToolBox::tab {
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignLeft|Qt::AlignBottom">
+                    <item>
+                     <spacer name="verticalSpacer_2">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>2</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item alignment="Qt::AlignLeft|Qt::AlignTop">
                      <widget class="QPushButton" name="maze_button">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>20</height>
+                       </size>
+                      </property>
                       <property name="font">
                        <font>
                         <pointsize>12</pointsize>
@@ -516,7 +535,50 @@ QToolBox::tab {
                       <property name="iconSize">
                        <size>
                         <width>24</width>
-                        <height>22</height>
+                        <height>19</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>5</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item alignment="Qt::AlignLeft">
+                     <widget class="QPushButton" name="aim_button">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color: white</string>
+                      </property>
+                      <property name="text">
+                       <string>Аим тренажер</string>
+                      </property>
+                      <property name="icon">
+                       <iconset>
+                        <normaloff>qt_icons/aim.png</normaloff>qt_icons/aim.png</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>23</width>
+                        <height>23</height>
                        </size>
                       </property>
                      </widget>
@@ -1061,7 +1123,7 @@ border-bottom: 3px solid rgb(230, 5, 64)</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="clicker_page">
           <property name="font">
@@ -1161,6 +1223,97 @@ background-color: rgba(230, 5, 64, 70)
                </widget>
               </item>
              </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page_3">
+          <layout class="QVBoxLayout" name="verticalLayout_31">
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="label_33">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>129</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>qt_icons/aim_2.png</pixmap>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+            <widget class="QLabel" name="label_32">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>8</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>17</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(230, 5, 64)</string>
+             </property>
+             <property name="text">
+              <string>Аим тренажер</string>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignLeft|Qt::AlignTop">
+            <widget class="QPushButton" name="aim_play">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>80</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>18</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+border: 3px solid rgb(230, 5, 64);
+border-radius: 10px;
+color: rgb(230, 5, 64)
+}
+QPushButton:hover{
+border: 3px solid rgb(230, 5, 64);
+border-radius: 10px;
+color: rgb(230, 5, 64);
+background-color: rgba(230, 5, 64, 70)
+}</string>
+             </property>
+             <property name="text">
+              <string> Играть </string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -1475,25 +1628,7 @@ background-color: rgba(230, 5, 64, 70)
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_29">
-              <item>
-               <widget class="QLabel" name="dino_record">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(230, 5, 64)</string>
-                </property>
-                <property name="text">
-                 <string>Рекорд: 0</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
+             <layout class="QVBoxLayout" name="verticalLayout_29"/>
             </widget>
            </item>
            <item alignment="Qt::AlignLeft|Qt::AlignTop">
@@ -1637,7 +1772,7 @@ background-color: rgba(230, 5, 64, 70)
                     <string notr="true">color: rgb(230, 5, 64)</string>
                    </property>
                    <property name="text">
-                    <string>• Лаунчер (PyQT)</string>
+                    <string>• Лаунчер</string>
                    </property>
                   </widget>
                  </item>
@@ -1945,6 +2080,21 @@ border-radius: 5px</string>
                    </property>
                    <property name="text">
                     <string>• Лабиринт</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_31">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(230, 5, 64)</string>
+                   </property>
+                   <property name="text">
+                    <string>• Аим тренажер</string>
                    </property>
                   </widget>
                  </item>
@@ -2579,6 +2729,44 @@ border-radius: 6px;</string>
                    </property>
                   </widget>
                  </item>
+                 <item>
+                  <widget class="QPushButton" name="aim_button_2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>34</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: white;
+border: 3px solid rgb(230, 5, 64);
+border-radius: 6px;</string>
+                   </property>
+                   <property name="text">
+                    <string>Аим тренажер</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>qt_icons/aim.png</normaloff>qt_icons/aim.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>28</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
                 </layout>
                </widget>
               </item>
@@ -2651,42 +2839,7 @@ border-radius: 6px;</string>
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_30">
-              <item>
-               <widget class="QLabel" name="ping_pong_wins">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(230, 5, 64)</string>
-                </property>
-                <property name="text">
-                 <string>Побед: 0</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="ping_pong_loses">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(230, 5, 64)</string>
-                </property>
-                <property name="text">
-                 <string>Поражений: 0</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
+             <layout class="QVBoxLayout" name="verticalLayout_30"/>
             </widget>
            </item>
            <item alignment="Qt::AlignLeft|Qt::AlignTop">
